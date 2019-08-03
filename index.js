@@ -24,7 +24,7 @@ XboxAccessory.prototype = {
 
   setPowerState: function(powerOn, callback) {
     var self = this;
-    this.log("Sending on command to '" + this.name + "'...");
+    this.log("Sending " + powerOn + " command to '" + this.name + "'...");
 
     Smartglass().powerOn({
       live_id: this.config['liveId'],
