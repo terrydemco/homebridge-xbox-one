@@ -1,6 +1,6 @@
 # homebridge-xbox-one
 
-Homebridge plugin to turn on Xbox One.  Unfortunately, that's all it does at present... hopefully someone figures out the protocol and we can beef this up soon :-)
+This fork also turns the xbox one off as well as on.
 
 ## Installation
 
