@@ -1,6 +1,6 @@
 # homebridge-xbox-one
 
-This fork also turns the xbox one off as well as on.
+Turn the Xbox One ON/OFF with homebridge, and will update power status to homebridge as well. 
 
 ## Installation
 
