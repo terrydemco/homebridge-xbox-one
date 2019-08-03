@@ -34,8 +34,5 @@
     "ping": "0.2.0",
     "xbox-on": "~0.0.8",
     "xbox-smartglass-core-node": "^0.6.1"
-  },
-  "devDependencies": {
-    "smartglass": "0.0.0"
   }
 }
