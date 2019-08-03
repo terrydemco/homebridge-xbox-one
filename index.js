@@ -41,7 +41,7 @@ XboxAccessory.prototype = {
 
         setTimeout(function(){
           sgClient.powerOff().then(function(status){
-            console.log('Shutdown succes!')
+            console.log('Shutdown success!')
           }, function(error){
             console.log('Shutdown error:', error)
           })
