@@ -26,15 +26,33 @@ XboxAccessory.prototype = {
     var self = this;
     this.log("Sending " + powerOn + " command to '" + this.name + "'...");
 
-    Smartglass().powerOn({
-      live_id: this.config['liveId'],
-      tries: this.config['tries'],
-      ip: this.config['ipAdress']
-    }).then(function(response){
-      console.log('Console booted:', response)
-    }, function(error){
-      console.log('Booting console failed:', error)
-    });
+    if (powerOn === true) {
+      // Queue tries times at tryInterval
+      for (var i = 0; i < this.tries; i++) {
+        setTimeout(function () {
+          self.xbox.powerOn();
+        }, i * this.tryInterval);
+      }
+    } else {
+      var sgClient = Smartglass()
+
+      sgClient.connect(this.config['ipAddress']).then(function(){
+        console.log('Xbox succesfully connected!');
+
+        setTimeout(function(){
+          sgClient.powerOff().then(function(status){
+            console.log('Shutdown succes!')
+          }, function(error){
+            console.log('Shutdown error:', error)
+          })
+        }.bind(sgClient), 1000)
+      }, function(error){
+        console.log(error)
+      });
+    }
+
+
+
 
     // Don't really care about powerOn errors, and don't want more than one callback
     callback();
