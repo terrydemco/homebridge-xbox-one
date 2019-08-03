@@ -1,5 +1,5 @@
 {
-  "name": "homebridge-xbox-one-on-off-test",
+  "name": "homebridge-xbox-one",
   "version": "0.2.6",
   "description": "Homebridge plugin to turn on Xbox One",
   "main": "index.js",

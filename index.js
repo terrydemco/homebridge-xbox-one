@@ -1,4 +1,3 @@
-var Xbox = require('xbox-on');
 var ping = require('ping');
 
 var Smartglass = require('xbox-smartglass-core-node/src/smartglass');
