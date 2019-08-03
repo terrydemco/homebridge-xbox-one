@@ -1,6 +1,8 @@
 var Xbox = require('xbox-on');
 var ping = require('ping');
 
+var Smartglass = require('xbox-smartglass-core-node/src/smartglass');
+
 var Service, Characteristic;
 
 module.exports = function(homebridge){
@@ -12,9 +14,10 @@ module.exports = function(homebridge){
 function XboxAccessory(log, config) {
   this.log = log;
   this.name = config['name'] || 'Xbox';
-  this.xbox = new Xbox(config['ipAddress'], config['liveId']);
-  this.tries = config['tries'] || 5;
-  this.tryInterval = config['tryInterval'] || 1000;
+  this.config = config;
+  //this.xbox = new Xbox(config['ipAddress'], config['liveId']);
+  //this.tries = config['tries'] || 5;
+  //this.tryInterval = config['tryInterval'] || 1000;
 }
 
 XboxAccessory.prototype = {
@@ -22,14 +25,17 @@ XboxAccessory.prototype = {
   setPowerState: function(powerOn, callback) {
     var self = this;
     this.log("Sending on command to '" + this.name + "'...");
-
-    // Queue tries times at tryInterval
-    for (var i = 0; i < this.tries; i++) {
-      setTimeout(function() {
-        self.xbox.powerOn();
-      }, i * this.tryInterval);
-    }
-
+    /*
+    Smartglass().powerOn({
+      live_id: this.config['liveId'],
+      tries: this.config['tries'],
+      ip: this.config['ipAdress']
+    }).then(function(response){
+      console.log('Console booted:', response)
+    }, function(error){
+      console.log('Booting console failed:', error)
+    });
+  */
     // Don't really care about powerOn errors, and don't want more than one callback
     callback();
   },

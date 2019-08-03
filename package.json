@@ -1,5 +1,5 @@
 {
-  "name": "homebridge-xbox-one",
+  "name": "homebridge-xbox-one-on-off-test",
   "version": "0.2.6",
   "description": "Homebridge plugin to turn on Xbox One",
   "main": "index.js",
@@ -31,7 +31,11 @@
   },
   "homepage": "https://github.com/arcreative/homebridge-xbox-one#readme",
   "dependencies": {
+    "ping": "0.2.0",
     "xbox-on": "~0.0.8",
-    "ping": "0.2.0"
+    "xbox-smartglass-core-node": "^0.6.1"
+  },
+  "devDependencies": {
+    "smartglass": "0.0.0"
   }
 }
