@@ -6,7 +6,7 @@ Turn the Xbox One ON/OFF with homebridge, and will update power status to homebr
 
 Naturally...
 ```
-npm install -g homebridge-xbox-one
+npm install -g terrydemco/homebridge-xbox-one
 ```
 
 ## Configuration
