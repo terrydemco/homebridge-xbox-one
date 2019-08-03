@@ -1,3 +1,4 @@
+var Xbox = require('xbox-on');
 var ping = require('ping');
 
 var Smartglass = require('xbox-smartglass-core-node/src/smartglass');
@@ -14,9 +15,9 @@ function XboxAccessory(log, config) {
   this.log = log;
   this.name = config['name'] || 'Xbox';
   this.config = config;
-  //this.xbox = new Xbox(config['ipAddress'], config['liveId']);
-  //this.tries = config['tries'] || 5;
-  //this.tryInterval = config['tryInterval'] || 1000;
+  this.xbox = new Xbox(config['ipAddress'], config['liveId']);
+  this.tries = config['tries'] || 5;
+  this.tryInterval = config['tryInterval'] || 1000;
 }
 
 XboxAccessory.prototype = {
@@ -24,7 +25,7 @@ XboxAccessory.prototype = {
   setPowerState: function(powerOn, callback) {
     var self = this;
     this.log("Sending on command to '" + this.name + "'...");
-    /*
+
     Smartglass().powerOn({
       live_id: this.config['liveId'],
       tries: this.config['tries'],
@@ -34,7 +35,7 @@ XboxAccessory.prototype = {
     }, function(error){
       console.log('Booting console failed:', error)
     });
-  */
+
     // Don't really care about powerOn errors, and don't want more than one callback
     callback();
   },
