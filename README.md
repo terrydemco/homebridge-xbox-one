@@ -1,12 +1,12 @@
 # homebridge-xbox-one
 
-Homebridge plugin to turn on Xbox One.  Unfortunately, that's all it does at present... hopefully someone figures out the protocol and we can beef this up soon :-)
+Turn the Xbox One ON/OFF with homebridge, and will update power status to homebridge as well. 
 
 ## Installation
 
 Naturally...
 ```
-npm install -g homebridge-xbox-one
+npm install -g terrydemco/homebridge-xbox-one
 ```
 
 ## Configuration
