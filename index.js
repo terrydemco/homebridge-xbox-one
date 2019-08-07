@@ -1,4 +1,4 @@
-var Xbox = require('xbox-on');
+//var Xbox = require('xbox-on');
 var ping = require('ping');
 
 var Smartglass = require('xbox-smartglass-core-node');
@@ -20,7 +20,7 @@ function XboxAccessory(log, config) {
   this.log = log;
   this.name = config['name'] || 'Xbox';
   this.config = config;
-  this.xbox = new Xbox(config['ipAddress'], config['liveId']);
+  //this.xbox = new Xbox(config['ipAddress'], config['liveId']);
   this.tries = config['tries'] || 5;
   this.tryInterval = config['tryInterval'] || 1000;
   
@@ -45,7 +45,7 @@ XboxAccessory.prototype = {
       // Queue tries times at tryInterval
       for (var i = 0; i < this.tries; i++) {
         setTimeout(function () {
-          self.xbox.powerOn();
+          //self.xbox.powerOn();
         }, i * this.tryInterval);
       }
     } else {
