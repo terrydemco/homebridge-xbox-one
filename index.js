@@ -36,7 +36,7 @@ XboxAccessory.prototype = {
     } else {
     this.log('checkpoint 1');
       var sgClient = Smartglass()
-	this.log('checkpoint 2 ' + this.config['ipAddress']);
+	this.log('checkpoint 2 ' + sgClient);
       sgClient.connect(this.config['ipAddress']).then(function(){
         this.log('Xbox succesfully connected!');
 
