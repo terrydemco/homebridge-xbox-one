@@ -25,12 +25,12 @@ function XboxAccessory(log, config) {
   this.tryInterval = config['tryInterval'] || 1000;
   
   deviceStatus.client = Smartglass();
-  
+  this.log('before device status')
   deviceStatus.client.connect(config['ipAddress']).then(function(){
-    console.log('Xbox succesfully connected!');
+    this.log('Xbox succesfully connected!');
     deviceStatus.connection_status = true
 }, function(error){
-    console.log('Failed to connect to xbox:', error);
+    this.log('Failed to connect to xbox:', error);
 });
   
 }
