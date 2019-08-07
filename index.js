@@ -38,27 +38,41 @@ deviceStatus.client.on('_on_console_status', function(message, xbox, remote, sma
     if(message.packet_decoded.protected_payload.apps[0] != undefined){
         if(deviceStatus.current_app != message.packet_decoded.protected_payload.apps[0].aum_id){
             deviceStatus.current_app = message.packet_decoded.protected_payload.apps[0].aum_id
-            console.log('xbox: Current active app:', deviceStatus)
+            this.log('xbox: Current active app:', deviceStatus)
         }
     }
 }.bind(deviceStatus));
 
 deviceStatus.client.on('_on_timeout', function(message, xbox, remote, smartglass){
     deviceStatus.connection_status = false
-    console.log('Connection timed out.')
+    this.log('Connection timed out.')
     clearInterval(interval)
 
     deviceStatus.client = Smartglass()
     deviceStatus.client.connect(config['ipAddress']).then(function(){
-        console.log('Xbox succesfully connected!');
+        this.log('Xbox succesfully connected!');
     }, function(error){
-        console.log('Failed to connect to xbox:', result);
+        this.log('Failed to connect to xbox:', result);
     });
 }.bind(deviceStatus, interval));
 
 var interval = setInterval(function(){
     this.log('connection_status:', deviceStatus.client._connection_status)
 }.bind(deviceStatus), 5000)
+
+
+Smartglass().discovery().then(function(consoles){
+    for(var xbox in consoles){
+        this.log('- Device found: ' + consoles[xbox].message.name);
+        this.log('  Address: '+ consoles[xbox].remote.address + ':' + consoles[xbox].remote.port);
+    }
+    if(consoles.length == 0){
+        this.log('No consoles found on the network')
+    }
+}, function(error){
+    this.log(error)
+});
+
   
 }
 
