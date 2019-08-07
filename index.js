@@ -95,17 +95,17 @@ XboxAccessory.prototype = {
       var sgClient = Smartglass()
 	  this.log('checkpoint 2 ' + JSON.stringify(sgClient));
       sgClient.connect(this.config['ipAddress']).then(function(){
-        this.log('Xbox succesfully connected!');
+        console.log('Xbox succesfully connected!');
 
         setTimeout(function(){
           sgClient.powerOff().then(function(status){
-            this.log('Shutdown success!')
+            console.log('Shutdown success!')
           }, function(error){
             this.log('Shutdown error:', error)
           })
         }.bind(sgClient), 1000)
       }, function(error){
-        this.log(error)
+        console.log(error)
       });
     }
 
