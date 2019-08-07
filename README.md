@@ -1,6 +1,6 @@
 # homebridge-xbox-one
 
-Turn the Xbox One ON/OFF with homebridge, and will update power status to homebridge as well. 
+Turn the Xbox One X ON/OFF with homebridge, and will update power status to homebridge as well. 
 
 ## Installation
 
