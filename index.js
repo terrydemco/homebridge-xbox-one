@@ -5,6 +5,11 @@ var Smartglass = require('xbox-smartglass-core-node');
 
 var Service, Characteristic;
 
+var deviceStatus = {
+    connection_status: false,
+    client: false
+}
+
 module.exports = function(homebridge){
   Service = homebridge.hap.Service;
   Characteristic = homebridge.hap.Characteristic;
@@ -18,6 +23,16 @@ function XboxAccessory(log, config) {
   this.xbox = new Xbox(config['ipAddress'], config['liveId']);
   this.tries = config['tries'] || 5;
   this.tryInterval = config['tryInterval'] || 1000;
+  
+  deviceStatus.client = Smartglass();
+  
+  deviceStatus.client.connect(config['ipAddress']).then(function(){
+    console.log('Xbox succesfully connected!');
+    deviceStatus.connection_status = true
+}, function(error){
+    console.log('Failed to connect to xbox:', error);
+});
+  
 }
 
 XboxAccessory.prototype = {
@@ -36,7 +51,7 @@ XboxAccessory.prototype = {
     } else {
     this.log('checkpoint 1');
       var sgClient = Smartglass()
-	this.log('checkpoint 2 ' + sgClient);
+	  this.log('checkpoint 2 ' + sgClient);
       sgClient.connect(this.config['ipAddress']).then(function(){
         this.log('Xbox succesfully connected!');
 
