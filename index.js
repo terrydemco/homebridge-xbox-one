@@ -91,9 +91,7 @@ XboxAccessory.prototype = {
         }, i * this.tryInterval);
       }
     } else {
-    this.log('checkpoint 1');
       var sgClient = Smartglass()
-	  this.log('checkpoint 2 ' + JSON.stringify(sgClient));
       sgClient.connect(this.config['ipAddress']).then(function(){
         console.log('Xbox succesfully connected!');
 
