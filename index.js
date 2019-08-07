@@ -25,6 +25,7 @@ function XboxAccessory(log, config) {
   this.tries = config['tries'] || 5;
   this.tryInterval = config['tryInterval'] || 1000;
   
+  /*
   deviceStatus.client = Smartglass();
   this.log('before device status')
   deviceStatus.client.connect(config['ipAddress']).then(function(){
@@ -71,7 +72,7 @@ Smartglass().discovery().then(function(consoles){
 }, function(error){
     console.log(error)
 });
-
+*/
 
   
 }
