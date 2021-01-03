@@ -20,7 +20,7 @@
     "WOL",
     "wake on lan"
   ],
-  "author": "Adam Robertson",
+  "author": "Terry Demco",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/terrydemco/homebridge-xbox-one/issues"
